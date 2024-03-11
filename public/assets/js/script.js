@@ -155,10 +155,8 @@ for (let i = 0, len = accordions.length; i < len; i++) { accordionInit(accordion
 /**
  * Solana
  */
-
 const solanaWeb3 = require('@solana/web3.js');
-const splToken = require('@solana/spl-token');
-const bs58 = require('bs58');
+const base58 = require('base58');
 
 const connectWallet = async () => {
   if ("phantom" in window && window.phantom.solana) {
