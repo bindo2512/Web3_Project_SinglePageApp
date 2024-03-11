@@ -155,6 +155,20 @@ for (let i = 0, len = accordions.length; i < len; i++) { accordionInit(accordion
 /**
  * Solana
  */
-const connectWallet = () => {
-  window.phantom.solana.connect();
+
+const solanaWeb3 = require('@solana/web3.js');
+const splToken = require('@solana/spl-token');
+const bs58 = require('bs58');
+
+const connectWallet = async () => {
+  if ("phantom" in window && window.phantom.solana) {
+    try {
+      const response = await window.phantom.solana.connect({ onlyIfTrusted: true });
+      console.log("Kết nối thành công:", response);
+    } catch (error) {
+      console.error("Đã có lỗi xảy ra: ", error);
+    }
+  } else {
+    alert("Bạn chưa cài đặt Extension Phantom Wallet.");
+  }
 }
