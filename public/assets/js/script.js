@@ -155,18 +155,27 @@ for (let i = 0, len = accordions.length; i < len; i++) { accordionInit(accordion
 /**
  * Solana
  */
-const solanaWeb3 = require('@solana/web3.js');
-const base58 = require('base58');
-
+document.querySelector(".btn-icon.primary").addEventListener("click", connectWallet);
+//CONNECT
 const connectWallet = async () => {
   if ("phantom" in window && window.phantom.solana) {
     try {
       const response = await window.phantom.solana.connect({ onlyIfTrusted: true });
       console.log("Kết nối thành công:", response);
+
+      let publicKey = window.phantom.solana.publicKey.toBase58();
+      console.log(publicKey);
+
     } catch (error) {
       console.error("Đã có lỗi xảy ra: ", error);
     }
   } else {
     alert("Bạn chưa cài đặt Extension Phantom Wallet.");
   }
+}
+// SHYFT - MINT NFT
+const PRIVATE_KEY = "NHxxNhUtwE6zmWCR";
+
+const mintNFT = async () => {
+
 }
